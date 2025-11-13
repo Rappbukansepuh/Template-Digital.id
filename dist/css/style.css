@@ -293,46 +293,76 @@ body {
 
 }
 
+/* ===== K3LH SECTION ===== */
 .k3lh {
+    background-color: #7b4eff; /* warna ungu elegan */
     padding: 100px 0;
-    background-color: #f9f9f9;
     text-align: center;
+    color: #fff;
 }
 
 .k3lh-box h1 {
     font-size: 2.5rem;
+    font-weight: 700;
     margin-bottom: 20px;
-    color: #333;
+    color: #fff;
 }
 
 .k3lh-box p {
     max-width: 700px;
-    margin: 0 auto 50px auto;
-    color: #555;
+    margin: 0 auto 60px auto;
+    font-size: 1rem;
+    color: #f0f0f0;
+    line-height: 1.6;
 }
 
+/* kontainer card */
 .k3lh-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
+    gap: 25px;
 }
 
+/* setiap card */
 .k3lh-content .box {
-    background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    background-color: #fff;
+    color: #333;
+    padding: 35px 25px;
+    border-radius: 16px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     flex: 1 1 250px;
-    max-width: 300px;
+    max-width: 320px;
+    transition: all 0.3s ease;
 }
 
+/* efek hover */
+.k3lh-content .box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* ikon */
 .k3lh-content .box i {
-    color: #1e90ff;
+    display: inline-block;
+    background: #7b4eff;
+    color: #fff;
+    padding: 12px;
+    border-radius: 50%;
+    font-size: 1.5rem;
     margin-bottom: 15px;
 }
 
+/* judul di dalam box */
 .k3lh-content .box h2 {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
+    font-weight: 600;
     margin-bottom: 10px;
+}
+
+/* teks deskripsi di dalam box */
+.k3lh-content .box p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
     }
