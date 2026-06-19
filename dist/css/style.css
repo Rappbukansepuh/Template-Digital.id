@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,18 +8,15 @@
 
 body {
     background-color: #7b51b1;
+    overflow-x: hidden; /* Mencegah halaman bisa digeser ke kanan di HP */
 }
 
-
-.logo h1{
-    color: black;
-}
-
-.container{
+/* Kontainer Utama */
+.container {
     width: 80%;
-    margin-inline: auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-
 
 @media (max-width: 992px) {
     .container {
@@ -27,393 +24,436 @@ body {
     }
 }
 
-.navbar{
-    padding: 20px 0px 20px 0px;
+.navbar {
+    padding: 20px 0;
+    position: relative;
+    z-index: 999;
 }
 
-.navbar-box{
+.navbar-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.navbar-box .menu{
-    display: flex;
-    gap: 50px;
+.logo h1 {
+    color: black;
+    font-size: 24px;
 }
 
-.navbar-box .menu li{
+.navbar-box .menu {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.navbar-box .menu li {
     list-style-type: none;
 }
 
-.navbar-box .menu li a{
+.navbar-box .menu li a {
     text-decoration: none;
     color: black;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
 }
 
-.navbar-box .menu li a:hover{
+.navbar-box .menu li a:hover {
     border-bottom: 3px solid #f1f1f1;
 }
 
-.navbar-box .ri-menu-3-line{
+/* Hamburger Menu Icon */
+.navbar-box .ri-menu-3-line {
     display: none;
     font-weight: bold;
+    cursor: pointer;
+    color: black;
 }
 
-@media (max-width: 768px){
-    .navbar-box .ri-menu-3-line{
+/* Mobile Responsive Navbar (< 768px) */
+@media (max-width: 768px) {
+    .navbar-box .ri-menu-3-line {
         display: block;
     }
 
-    .navbar-box .menu{
+    .navbar-box .menu {
         position: absolute;
-        top: -100%;
-        left: 50%;
-        transform: translateX(-50%);
+        top: 100%; /* Menyesuaikan posisi tepat di bawah navbar */
+        left: 0;
+        right: 0;
         flex-direction: column;
         text-align: center;
-        background-color: black;
+        background-color: rgba(0, 0, 0, 0.95);
         width: 100%;
-        padding: 40px 0px 40px 0;
-        transition: all 3.2s ease-in-out;
+        padding: 30px 0;
+        gap: 25px;
+        transform: translateY(-150%); /* Tersembunyi rapi di atas */
+        transition: transform 0.4s ease-in-out, opacity 0.3s ease;
+        opacity: 0;
+        pointer-events: none; /* Mencegah link tidak sengaja terklik saat sembunyi */
+    }
+
+    /* Ketika menu aktif ditambahkan via Javascript */
+    .navbar-box .menu.menu-active {
+        transform: translateY(0);
         opacity: 1;
+        pointer-events: auto;
     }
 
-
-    .navbar-box .menu.menu-active{
-        top: 100px;
-        opacity: 3;
+    .navbar-box .menu li a {
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
     }
-
-.navbar-box .menu li a{
-    color: white;
-    font-size: 20px;
-    text-decoration: underline;
+    
+    .navbar-box .menu li a:hover {
+        border-bottom: none;
+        color: #ef4444; /* Efek hover teks saat di mobile */
+    }
 }
 
+
+.hero {
+    padding: 60px 0;
 }
 
-.hero{
-    padding-top: 60px;
-}
-
-.hero-box{
+.hero-box {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 40px;
+    align-items: center;
 }
 
-.hero-box h1{
-    font-size: 50px;
-    line-height: 1.5;
-    margin-bottom: 10px;
+.hero-box h1 {
+    font-size: 45px;
+    line-height: 1.3;
+    margin-bottom: 15px;
     color: black;
 }
 
-.hero-box p{
-    line-height: 2;
+.hero-box p {
+    line-height: 1.8;
     margin-bottom: 30px;
+    color: #f1f1f1;
 }
 
-.hero-box a{
+.hero-box a {
     text-decoration: none;
     background-color: black;
     color: white;
-    padding: 10px 20px 10px 20px;
+    padding: 12px 25px;
     border-radius: 5px;
+    font-weight: 500;
+    display: inline-block;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.hero-box img{
+.hero-box a:hover {
+    background-color: #222;
+    transform: translateY(-2px);
+}
+
+.box1 img {
     width: 100%;
-    height: 100%;
+    max-width: 440px;
+    height: auto;
+    object-fit: cover;
     border-radius: 30px;
+    display: block;
+    margin: 0 auto;
 }
 
-.box1 img{
-    width: 440px;
-    height: 440px;
-    padding: 5px 1px 5px 1px;
-}
-
-@media (max-width: 768px){
-    .hero-box{
+@media (max-width: 768px) {
+    .hero-box {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 30px;
+    }
+    .hero-box h1 {
+        font-size: 32px;
     }
 }
 
-.layanan{
-    padding-top: 150px;
-    padding-bottom: 150px;
+.layanan {
+    padding: 100px 0;
 }
 
-.layanan-box{
+.layanan-box {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 25px;
 }
 
-.layanan-box .box{
+/* Memastikan grid K3LH yang berisi 4 item tampak rapi */
+.k3lh-section .layanan-box {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.layanan-box .box {
     background-color: white;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.layanan-box .box:hover{
+.layanan-box .box:hover {
     background-color: black;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
 }
 
 .layanan-box .box:hover > * {
-    color: white;
+    color: white !important;
 }
 
 .layanan-box .box i {
-    color: black;
+    color: #7b51b1; /* Warna ikon disesuaikan tema */
+    transition: color 0.3s ease;
 }
 
 .layanan-box .box h2 {
-    margin-top: 20px;
-    margin-bottom: 5px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #333;
 }
 
-@media (max-width: 992px){
-    .layanan-box {
+.layanan-box .box p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+}
+
+@media (max-width: 992px) {
+    .layanan-box, .k3lh-section .layanan-box {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 575px){
-    .layanan-box {
+@media (max-width: 600px) {
+    .layanan-box, .k3lh-section .layanan-box {
         grid-template-columns: 1fr;
     }
 }
 
-.produk{
-    padding-bottom: 150px;
+.produk {
+    padding-bottom: 100px;
 }
 
-.produk-box h1{
+.produk-box h1 {
     text-align: center;
     margin-bottom: 30px;
+    color: white;
 }
 
-.produk-box ul{
+.produk-box ul {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-bottom: 50px;
+    gap: 15px;
+    margin-bottom: 40px;
     flex-wrap: wrap;
 }
 
-.produk-box ul li{
+.produk-box ul li {
     list-style-type: none;
     background-color: white;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 8px 20px;
+    border-radius: 20px;
     cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
 }
 
-.produk-box ul li.active{
+.produk-box ul li.active, .produk-box ul li:hover {
     background-color: black;
     color: white;
 }
 
-.produk-box .produk-list{
-    display: flex;
-    flex-wrap: wrap;
+.produk-box .produk-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
-    justify-content: center;
 }
 
-.produk-box .produk-list img{
-    width: 250px;
-    height: 250px;
+.produk-box .produk-list img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
     background-color: white;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 8px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.produk-box .produk-list img:hover{
-    background-color: black;
+.produk-box .produk-list img:hover {
     transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-@media (max-width: 475px){
-    .produk-box .produk-list img{
-        width: 150px;
-        height: 100px;
+@media (max-width: 475px) {
+    .produk-box .produk-list {
+        grid-template-columns: repeat(2, 1fr); /* Tampilan grid 2 kolom rapi di HP kecil */
+        gap: 10px;
+    }
+    .produk-box .produk-list img {
+        height: 140px;
     }
 }
 
-.footer{
+.footer {
     background-color: white;
     color: black;
-    padding: 20px;
+    padding: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 15px 15px 0 0;
 }
 
-.footer p span{
+.footer p span {
     font-weight: bold;
-    color: red;
+    color: #ef4444;
 }
 
 .footer .box:nth-child(2) {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
-.footer .box i{
+.footer .box a {
+    color: black;
+    text-decoration: none;
+}
+
+.footer .box i {
     cursor: pointer;
-    transition: all 1.2s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.footer .box i:hover{
-    color: #333;
-    transform: scale(1.03);
+.footer .box i:hover {
+    color: #7b51b1; /* Efek hover ikon medsos sewarna tema body */
+    transform: scale(1.15);
 }
 
 @media (max-width: 768px) {
-    .footer{
-        gap: 20px;
+    .footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
     }
-
-    .footer p{
-        font-size: 12px;
+    .footer p {
+        font-size: 13px;
     }
-
-    .footer .box:nth-child(2) {
-        gap: 10px;
-    }
-
 }
 
-.container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 50px;
+}
 
-        header {
-            text-align: center;
-            color: white;
-            margin-bottom: 50px;
-        }
+.subtitle {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
+.swot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
 
-        .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
+.swot-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .swot-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
+.swot-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
 
-        .swot-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.swot-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid;
+}
 
-        .swot-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
+.swot-icon {
+    font-size: 2em;
+    margin-right: 15px;
+}
 
-        .swot-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid;
-        }
+.swot-title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
 
-        .swot-icon {
-            font-size: 2em;
-            margin-right: 15px;
-        }
+.strengths .swot-header { 
+    border-color: #10b981; 
+    color: #10b981; 
+}
 
-        .swot-title {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
+.weaknesses .swot-header {
+    border-color: #f59e0b; 
+    color: #f59e0b;
+}
 
-        .strengths .swot-header {
-            border-color: #10b981;
-            color: #10b981;
-        }
+.opportunities .swot-header {
+    border-color: #3b82f6; 
+    color: #3b82f6; 
+}
 
-        .weaknesses .swot-header {
-            border-color: #f59e0b;
-            color: #f59e0b;
-        }
+.threats .swot-header {
+    border-color: #ef4444; 
+    color: #ef4444; 
+}
 
-        .opportunities .swot-header {
-            border-color: #3b82f6;
-            color: #3b82f6;
-        }
+.swot-content {
+    color: #4b5563;
+}
 
-        .threats .swot-header {
-            border-color: #ef4444;
-            color: #ef4444;
-        }
+.swot-content p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    padding-left: 20px;
+    position: relative;
+}
 
-        .swot-content {
-            color: #4b5563;
-        }
+.swot-content p:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 1.2em;
+}
 
-        .swot-content p {
-            margin-bottom: 12px;
-            line-height: 1.6;
-            padding-left: 20px;
-            position: relative;
-        }
+.strengths .swot-content p:before { 
+    color: #10b981; 
+}
 
-        .swot-content p:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
+.weaknesses .swot-content p:before {
+    color: #f59e0b; 
+}
 
-        .strengths .swot-content p:before {
-            color: #10b981;
-        }
+.opportunities .swot-content p:before { 
+    color: #3b82f6; 
+}
 
-        .weaknesses .swot-content p:before {
-            color: #f59e0b;
-        }
-
-        .opportunities .swot-content p:before {
-            color: #3b82f6;
-        }
-
-.threats .swot-content p:before {
-            color: #ef4444;
-            }
-
-@media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            .swot-grid {
-                grid-template-columns: 1fr;
-            }
+.threats .swot-content p:before { 
+    color: #ef4444; 
 }
